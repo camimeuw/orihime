@@ -58,11 +58,19 @@ body {
   color: var(--gris);
 }
 
+.brand-row {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
 .wordmark {
   font-family: 'Courier', monospace;
   font-weight: bold;
-  font-size: 1.3rem;
+  font-size: 1.7rem;
   letter-spacing: 0.05em;
+  color: var(--gris);
 }
 
 .nav-archivo {
@@ -80,24 +88,15 @@ body {
 
 /* ===== hero estampado ===== */
 .hero-stamp {
-  padding: 1rem 1.5rem 2rem;
+  padding: 1rem 1.5rem 1.5rem;
   border-bottom: 1px dashed var(--tostado);
-}
-
-.stamp {
-  font-family: 'Courier', monospace;
-  font-weight: bold;
-  font-size: clamp(2rem, 8vw, 3.2rem);
-  line-height: 1.05;
-  color: var(--sello);
 }
 
 .stamp-sub {
   font-family: 'CourierNew', monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  margin-top: 0.8rem;
   opacity: 0.75;
 }
 
@@ -133,6 +132,8 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .ficha-img {
@@ -148,6 +149,24 @@ body {
   letter-spacing: 0.1em;
   color: var(--gris);
   text-transform: lowercase;
+}
+
+.btn-comprar {
+  margin-top: 0.6rem;
+  display: inline-block;
+  padding: 0.35rem 0.9rem;
+  border: 1px solid var(--tinta);
+  font-family: 'CourierNew', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-comprar:hover {
+  background-color: var(--sello);
+  border-color: var(--sello);
+  color: var(--crema);
 }
 
 /* ===== sobre / archivo ===== */
