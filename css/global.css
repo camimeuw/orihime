@@ -1,0 +1,220 @@
+@font-face {
+  font-family: 'Courier';
+  src: url('../fonts/CourierR.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Courier';
+  src: url('../fonts/CourierB.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CourierNew';
+  src: url('../fonts/CourierN.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ===== base ===== */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:root {
+  --crema: #FFFFFF;
+  --tinta: #201F1C;
+  --gris: #8B8B87;
+  --tostado: #A89686;
+  --sello: #8C4A3B;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--crema);
+  color: var(--tinta);
+  font-family: 'Courier', monospace;
+}
+
+/* ===== topbar ===== */
+.topbar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.5rem 1.5rem 1rem;
+}
+
+.mark {
+  font-size: 0.9rem;
+  color: var(--gris);
+}
+
+.wordmark {
+  font-family: 'Courier', monospace;
+  font-weight: bold;
+  font-size: 1.3rem;
+  letter-spacing: 0.05em;
+}
+
+.nav-archivo {
+  display: flex;
+  gap: 1.3rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: lowercase;
+  color: var(--gris);
+}
+
+.nav-archivo a:hover {
+  color: var(--sello);
+}
+
+/* ===== hero estampado ===== */
+.hero-stamp {
+  padding: 1rem 1.5rem 2rem;
+  border-bottom: 1px dashed var(--tostado);
+}
+
+.stamp {
+  font-family: 'Courier', monospace;
+  font-weight: bold;
+  font-size: clamp(2rem, 8vw, 3.2rem);
+  line-height: 1.05;
+  color: var(--sello);
+}
+
+.stamp-sub {
+  font-family: 'CourierNew', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-top: 0.8rem;
+  opacity: 0.75;
+}
+
+.ficha-estado {
+  margin-top: 1.5rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--gris);
+  text-transform: lowercase;
+}
+
+/* ===== catalogo ===== */
+.catalogo {
+  padding: 2.5rem 1.5rem;
+}
+
+.catalogo-titulo {
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: lowercase;
+  color: var(--gris);
+  margin-bottom: 1.5rem;
+}
+
+.fichas-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem 1rem;
+}
+
+.ficha-producto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.ficha-img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 6px 10px rgba(32, 31, 28, 0.15));
+}
+
+.ficha-numero {
+  margin-top: 0.7rem;
+  font-family: 'CourierNew', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--gris);
+  text-transform: lowercase;
+}
+
+/* ===== sobre / archivo ===== */
+.sobre-archivo {
+  padding: 2.5rem 1.5rem;
+  border-top: 1px dashed var(--tostado);
+  text-align: center;
+}
+
+.sobre-texto {
+  max-width: 32ch;
+  margin: 0 auto;
+  font-family: 'CourierNew', monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--tinta);
+}
+
+/* ===== footer / contacto ===== */
+.footer-archivo {
+  padding: 2.5rem 1.5rem 3rem;
+  border-top: 1px dashed var(--tostado);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.footer-archivo p {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: lowercase;
+  color: var(--gris);
+}
+
+.btn-whatsapp {
+  display: inline-block;
+  padding: 0.7rem 1.6rem;
+  border: 1px solid var(--tinta);
+  font-family: 'Courier', monospace;
+  font-weight: bold;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: lowercase;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-whatsapp:hover {
+  background-color: var(--sello);
+  border-color: var(--sello);
+  color: var(--crema);
+}
+
+/* ===== desktop / tablet ===== */
+@media (min-width: 700px) {
+  .topbar,
+  .hero-stamp,
+  .catalogo,
+  .sobre-archivo,
+  .footer-archivo {
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .fichas-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
