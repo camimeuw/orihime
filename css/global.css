@@ -216,6 +216,14 @@ body {
   font-size: 0.85rem;
 }
 
+.carrito-aviso {
+  margin-bottom: 1rem;
+  font-family: 'CourierNew', monospace;
+  font-size: 0.65rem;
+  line-height: 1.5;
+  color: var(--gris);
+}
+
 /* ===== topbar ===== */
 .topbar {
   position: sticky;
@@ -563,6 +571,45 @@ body {
   color: var(--tinta);
 }
 
+.politicas-archivo {
+  padding: 2.5rem 1.5rem;
+  border-top: 1px dashed var(--tostado);
+}
+
+.politicas-titulo {
+  font-family: 'Courier', monospace;
+  font-weight: bold;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: lowercase;
+  margin-bottom: 1rem;
+}
+
+.politicas-lista {
+  max-width: 40ch;
+  margin: 0 auto;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.politicas-lista li {
+  font-family: 'CourierNew', monospace;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: var(--gris);
+  padding-left: 1rem;
+  position: relative;
+}
+
+.politicas-lista li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--sello);
+}
+
 /* ===== footer / contacto ===== */
 .footer-archivo {
   padding: 2.5rem 1.5rem 3rem;
@@ -711,6 +758,7 @@ body {
   .hero-stamp,
   .catalogo,
   .sobre-archivo,
+  .politicas-archivo,
   .footer-archivo,
   .detalle-pieza {
     max-width: 960px;
