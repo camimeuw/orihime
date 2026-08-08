@@ -58,11 +58,19 @@ body {
   color: var(--gris);
 }
 
+.brand-row {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
 .wordmark {
   font-family: 'Courier', monospace;
   font-weight: bold;
-  font-size: 1.3rem;
+  font-size: 1.7rem;
   letter-spacing: 0.05em;
+  color: var(--gris);
 }
 
 .nav-archivo {
@@ -80,24 +88,35 @@ body {
 
 /* ===== hero estampado ===== */
 .hero-stamp {
-  padding: 1rem 1.5rem 2rem;
+  padding: 1rem 1.5rem 1.5rem;
   border-bottom: 1px dashed var(--tostado);
+  text-align: center;
 }
 
-.stamp {
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.ascii-hero {
+  display: inline-block;
+  margin: 0 auto 1rem;
   font-family: 'Courier', monospace;
-  font-weight: bold;
-  font-size: clamp(2rem, 8vw, 3.2rem);
-  line-height: 1.05;
-  color: var(--sello);
+  font-size: clamp(0.42rem, 1.8vw, 0.62rem);
+  line-height: 1;
+  color: var(--tinta);
+  white-space: pre;
 }
 
 .stamp-sub {
   font-family: 'CourierNew', monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  margin-top: 0.8rem;
   opacity: 0.75;
 }
 
@@ -122,6 +141,41 @@ body {
   margin-bottom: 1.5rem;
 }
 
+.categorias-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.chip {
+  cursor: pointer;
+  background: none;
+  border: 1px solid var(--tostado);
+  padding: 0.3rem 0.8rem;
+  font-family: 'CourierNew', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  text-transform: lowercase;
+  color: var(--gris);
+}
+
+.chip-activo {
+  border-color: var(--tinta);
+  color: var(--tinta);
+  background-color: var(--tostado);
+  background-color: color-mix(in srgb, var(--tostado) 25%, transparent);
+}
+
+.catalogo-estado {
+  font-family: 'CourierNew', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: var(--gris);
+  text-transform: lowercase;
+  padding: 1rem 0;
+}
+
 .fichas-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -133,6 +187,15 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.ficha-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 .ficha-img {
@@ -141,13 +204,106 @@ body {
   filter: drop-shadow(0 6px 10px rgba(32, 31, 28, 0.15));
 }
 
+.ficha-placeholder {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed var(--tostado);
+  font-family: 'CourierNew', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--tostado);
+  text-transform: lowercase;
+}
+
+.ficha-nombre {
+  margin-top: 0.8rem;
+  font-family: 'Courier', monospace;
+  font-weight: bold;
+  font-size: 0.85rem;
+  text-transform: lowercase;
+}
+
 .ficha-numero {
-  margin-top: 0.7rem;
+  margin-top: 0.2rem;
   font-family: 'CourierNew', monospace;
   font-size: 0.7rem;
   letter-spacing: 0.1em;
   color: var(--gris);
   text-transform: lowercase;
+}
+
+.ficha-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.tag {
+  border: 1px solid var(--gris);
+  padding: 0.1rem 0.5rem;
+  font-family: 'CourierNew', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.05em;
+  color: var(--gris);
+  text-transform: lowercase;
+}
+
+.ficha-precio {
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.4rem;
+  font-family: 'Courier', monospace;
+  font-size: 0.8rem;
+}
+
+.precio-original {
+  color: var(--gris);
+  text-decoration: line-through;
+  font-size: 0.7rem;
+}
+
+.precio-final {
+  color: var(--tinta);
+  font-weight: bold;
+}
+
+.precio-desc-tag {
+  color: var(--sello);
+  font-size: 0.65rem;
+}
+
+.ficha-detalle {
+  margin-top: 0.4rem;
+  font-family: 'CourierNew', monospace;
+  font-size: 0.65rem;
+  line-height: 1.4;
+  color: var(--gris);
+  max-width: 22ch;
+}
+
+.btn-comprar {
+  margin-top: 0.6rem;
+  display: inline-block;
+  padding: 0.35rem 0.9rem;
+  border: 1px solid var(--tinta);
+  font-family: 'CourierNew', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-comprar:hover {
+  background-color: var(--sello);
+  border-color: var(--sello);
+  color: var(--crema);
 }
 
 /* ===== sobre / archivo ===== */
@@ -202,13 +358,125 @@ body {
   color: var(--crema);
 }
 
+/* ===== detalle de pieza ===== */
+.detalle-pieza {
+  padding: 2rem 1.5rem 2.5rem;
+}
+
+.volver-link {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  font-family: 'CourierNew', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: lowercase;
+  color: var(--gris);
+}
+
+.volver-link:hover {
+  color: var(--sello);
+}
+
+.detalle-galeria {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.detalle-img-principal {
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+  filter: drop-shadow(0 8px 14px rgba(32, 31, 28, 0.18));
+}
+
+.detalle-placeholder {
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 3 / 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed var(--tostado);
+  font-family: 'CourierNew', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--tostado);
+  text-transform: lowercase;
+}
+
+.detalle-miniaturas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.detalle-miniatura {
+  width: 3.5rem;
+  height: 3.5rem;
+  object-fit: cover;
+  cursor: pointer;
+  opacity: 0.55;
+  border: 1px solid transparent;
+}
+
+.detalle-miniatura:hover {
+  opacity: 0.85;
+}
+
+.miniatura-activa {
+  opacity: 1;
+  border-color: var(--tinta);
+}
+
+.detalle-info {
+  margin-top: 2rem;
+  text-align: left;
+}
+
+.detalle-nombre {
+  margin-top: 0.3rem;
+  font-family: 'Courier', monospace;
+  font-weight: bold;
+  font-size: 1.4rem;
+  text-transform: lowercase;
+}
+
+.detalle-categoria {
+  margin-top: 0.3rem;
+  font-family: 'CourierNew', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--gris);
+  text-transform: lowercase;
+}
+
+.detalle-info .ficha-tags,
+.detalle-info .ficha-precio {
+  justify-content: flex-start;
+}
+
+.detalle-info .ficha-detalle {
+  max-width: 40ch;
+  text-align: left;
+}
+
+.btn-comprar-grande {
+  margin-top: 1.2rem;
+  padding: 0.7rem 1.6rem;
+  font-size: 0.8rem;
+}
+
 /* ===== desktop / tablet ===== */
 @media (min-width: 700px) {
   .topbar,
   .hero-stamp,
   .catalogo,
   .sobre-archivo,
-  .footer-archivo {
+  .footer-archivo,
+  .detalle-pieza {
     max-width: 960px;
     margin-left: auto;
     margin-right: auto;
@@ -216,5 +484,16 @@ body {
 
   .fichas-grid {
     grid-template-columns: repeat(4, 1fr);
+  }
+
+  .detalle-contenido {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .detalle-info {
+    margin-top: 0;
   }
 }
