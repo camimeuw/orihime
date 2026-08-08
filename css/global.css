@@ -49,6 +49,17 @@ body {
   font-family: 'Courier', monospace;
 }
 
+.anuncio-barra {
+  background-color: var(--tinta);
+  color: var(--crema);
+  text-align: center;
+  padding: 0.5rem 1rem;
+  font-family: 'CourierNew', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+}
+
 /* ===== carrito ===== */
 .carrito-boton {
   flex-shrink: 0;
