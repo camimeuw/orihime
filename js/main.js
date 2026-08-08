@@ -5,7 +5,6 @@ function buildFichaHTML(producto) {
   const imagenHTML = imagenes.length
     ? `<img src="${imagenes[0]}" alt="${nombre}" loading="lazy" class="ficha-img">`
     : `<div class="ficha-placeholder">sin foto</div>`;
-  const mensaje = encodeURIComponent(`Hola! Quiero comprar la pieza n.º ${numero} (${nombre})`);
 
   return `
     <div class="ficha-producto" data-categoria="${(producto.categoria || '').toLowerCase()}">
@@ -19,7 +18,6 @@ function buildFichaHTML(producto) {
       </a>
       <div class="ficha-acciones">
         ${buildBotonCarritoHTML(producto)}
-        <a href="https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=${mensaje}" class="btn-comprar" target="_blank" rel="noopener">comprar</a>
       </div>
     </div>`;
 }

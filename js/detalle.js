@@ -31,7 +31,6 @@ function activarGaleria() {
 function buildFichaDetalleHTML(producto) {
   const nombre = producto.nombre || 'pieza';
   const numero = producto.id || '';
-  const mensaje = encodeURIComponent(`Hola! Quiero comprar la pieza n.º ${numero} (${nombre})`);
 
   return `
     ${buildGaleriaHTML(imagenesDeProducto(producto), nombre)}
@@ -44,7 +43,6 @@ function buildFichaDetalleHTML(producto) {
       ${buildMedidasHTML(producto)}
       <div class="ficha-acciones ficha-acciones-detalle">
         ${buildBotonCarritoHTML(producto)}
-        <a href="https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=${mensaje}" class="btn-comprar btn-comprar-grande" target="_blank" rel="noopener">comprar por whatsapp</a>
       </div>
     </div>`;
 }

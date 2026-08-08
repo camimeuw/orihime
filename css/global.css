@@ -433,7 +433,6 @@ body {
   width: 100%;
 }
 
-.btn-comprar,
 .btn-carrito {
   flex: 1;
   display: inline-block;
@@ -449,18 +448,18 @@ body {
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.btn-comprar:hover {
-  background-color: var(--sello);
-  border-color: var(--sello);
-  color: var(--crema);
-}
-
 .btn-carrito:hover {
   background-color: var(--tostado);
 }
 
 .ficha-acciones-detalle {
   max-width: 26rem;
+  margin-top: 1.2rem;
+}
+
+.ficha-acciones-detalle .btn-carrito {
+  padding: 0.7rem 1.6rem;
+  font-size: 0.8rem;
 }
 
 /* ===== sobre / archivo ===== */
@@ -620,11 +619,6 @@ body {
   text-align: left;
 }
 
-.btn-comprar-grande {
-  margin-top: 1.2rem;
-  padding: 0.7rem 1.6rem;
-  font-size: 0.8rem;
-}
 
 /* ===== desktop / tablet ===== */
 @media (min-width: 700px) {
