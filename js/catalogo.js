@@ -1,5 +1,5 @@
 const CONFIG = {
-  WHATSAPP_NUMBER: '5490000000000',
+  WHATSAPP_NUMBER: '5492314552379',
   SHEET_CSV_URL: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTTXR5HDNFBf4DG_4FANIXUfHsLzDUspupM68yHky2UEW7lRPRwmrVDrCoTM7lz6PegvQggL-6UDNj6/pub?output=csv',
 };
 
