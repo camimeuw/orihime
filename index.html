@@ -8,9 +8,6 @@
 </head>
 <body>
 
-  <button id="carrito-boton" class="carrito-boton" aria-label="ver carrito">
-    carrito <span id="carrito-contador" class="carrito-contador" hidden>0</span>
-  </button>
   <div id="carrito-overlay" class="carrito-overlay" hidden></div>
   <aside id="carrito-panel" class="carrito-panel" hidden>
     <div class="carrito-panel-header">
@@ -23,10 +20,17 @@
   </aside>
 
   <header class="topbar">
-    <p class="mark">°</p>
-    <div class="brand-row">
-      <a href="#" class="wordmark">orihime</a>
-      <p class="stamp-sub">archivo de piezas únicas</p>
+    <div class="topbar-top">
+      <div class="marca">
+        <p class="mark">°</p>
+        <div class="brand-row">
+          <a href="#" class="wordmark">orihime</a>
+          <p class="stamp-sub">archivo de piezas únicas</p>
+        </div>
+      </div>
+      <button id="carrito-boton" class="carrito-boton" aria-label="ver carrito">
+        carrito <span id="carrito-contador" class="carrito-contador" hidden>0</span>
+      </button>
     </div>
     <nav class="nav-archivo">
       <a href="#catalogo">catálogo</a>
