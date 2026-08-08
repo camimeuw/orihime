@@ -1,19 +1,3 @@
-function animarAsciiHero() {
-  const el = document.querySelector('.ascii-hero');
-  if (!el) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  const lineas = el.textContent.split('\n');
-  el.textContent = '';
-  lineas.forEach((linea, i) => {
-    setTimeout(() => {
-      el.textContent += (i === 0 ? '' : '\n') + linea;
-    }, i * 20);
-  });
-}
-
-animarAsciiHero();
-
 function buildFichaHTML(producto, indice) {
   const nombre = producto.nombre || 'pieza';
   const numero = producto.id || '';
