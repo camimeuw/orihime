@@ -110,6 +110,36 @@ function buildMedidasHTML(producto) {
   return `<p class="ficha-detalle">${partes.join(' — ')}</p>`;
 }
 
+function buildUltimaHTML(producto) {
+  if (String(producto.stock).trim() !== '1') return '';
+  return `<span class="badge-ultima">última pieza</span>`;
+}
+
+function buildFichaHTML(producto, indice) {
+  const nombre = producto.nombre || 'pieza';
+  const numero = producto.id || '';
+  const imagenes = imagenesDeProducto(producto);
+  const imagenHTML = imagenes.length
+    ? `<img src="${imagenes[0]}" alt="${nombre}" loading="lazy" class="ficha-img">`
+    : `<div class="ficha-placeholder">sin foto</div>`;
+
+  return `
+    <div class="ficha-producto" data-categoria="${(producto.categoria || '').toLowerCase()}" style="--i:${indice || 0}">
+      <a href="pieza.html?id=${encodeURIComponent(numero)}" class="ficha-link">
+        ${buildUltimaHTML(producto)}
+        ${imagenHTML}
+        <p class="ficha-nombre">${nombre}</p>
+        <p class="ficha-numero">pieza n.º ${numero}</p>
+        ${buildTagsHTML(producto)}
+        ${buildPrecioHTML(producto)}
+        ${buildMedidasHTML(producto)}
+      </a>
+      <div class="ficha-acciones">
+        ${buildBotonCarritoHTML(producto)}
+      </div>
+    </div>`;
+}
+
 async function fetchProductos() {
   const respuesta = await fetch(CONFIG.SHEET_CSV_URL);
   if (!respuesta.ok) throw new Error('no se pudo leer la hoja');

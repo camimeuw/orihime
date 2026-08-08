@@ -422,6 +422,21 @@ body {
   flex-direction: column;
   align-items: center;
   width: 100%;
+  position: relative;
+}
+
+.badge-ultima {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background: var(--sello);
+  color: var(--crema);
+  font-family: 'CourierNew', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.05em;
+  text-transform: lowercase;
+  padding: 0.2rem 0.5rem;
 }
 
 .ficha-img {
@@ -612,6 +627,35 @@ body {
   color: var(--sello);
 }
 
+.politicas-lista li strong {
+  color: var(--tinta);
+}
+
+.medidas-intro,
+.medidas-tip {
+  max-width: 40ch;
+  margin: 0 auto 1.5rem;
+  font-family: 'CourierNew', monospace;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: var(--gris);
+}
+
+.medidas-tip {
+  margin: 1.5rem auto 0;
+  font-style: italic;
+}
+
+.medidas-link {
+  display: inline-block;
+  margin-top: 0.3rem;
+  font-family: 'CourierNew', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  color: var(--sello);
+  text-decoration: underline;
+}
+
 /* ===== footer / contacto ===== */
 .footer-archivo {
   padding: 2.5rem 1.5rem 3rem;
@@ -671,6 +715,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 
 .detalle-img-principal {

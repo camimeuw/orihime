@@ -1,27 +1,3 @@
-function buildFichaHTML(producto, indice) {
-  const nombre = producto.nombre || 'pieza';
-  const numero = producto.id || '';
-  const imagenes = imagenesDeProducto(producto);
-  const imagenHTML = imagenes.length
-    ? `<img src="${imagenes[0]}" alt="${nombre}" loading="lazy" class="ficha-img">`
-    : `<div class="ficha-placeholder">sin foto</div>`;
-
-  return `
-    <div class="ficha-producto" data-categoria="${(producto.categoria || '').toLowerCase()}" style="--i:${indice}">
-      <a href="pieza.html?id=${encodeURIComponent(numero)}" class="ficha-link">
-        ${imagenHTML}
-        <p class="ficha-nombre">${nombre}</p>
-        <p class="ficha-numero">pieza n.º ${numero}</p>
-        ${buildTagsHTML(producto)}
-        ${buildPrecioHTML(producto)}
-        ${buildMedidasHTML(producto)}
-      </a>
-      <div class="ficha-acciones">
-        ${buildBotonCarritoHTML(producto)}
-      </div>
-    </div>`;
-}
-
 function renderCategorias(productos, onSelect) {
   const contenedor = document.getElementById('categorias-lista');
   const categorias = [...new Set(productos.map((p) => p.categoria).filter(Boolean))];

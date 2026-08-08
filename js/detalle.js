@@ -1,11 +1,11 @@
-function buildGaleriaHTML(imagenes, nombre) {
+function buildGaleriaHTML(imagenes, nombre, ultimaHTML) {
   if (!imagenes.length) {
-    return `<div class="detalle-galeria"><div class="detalle-placeholder">sin foto</div></div>`;
+    return `<div class="detalle-galeria">${ultimaHTML}<div class="detalle-placeholder">sin foto</div></div>`;
   }
 
   const principal = `<img src="${imagenes[0]}" alt="${nombre}" class="detalle-img-principal" id="detalle-img-principal">`;
   if (imagenes.length === 1) {
-    return `<div class="detalle-galeria">${principal}</div>`;
+    return `<div class="detalle-galeria">${ultimaHTML}${principal}</div>`;
   }
 
   const miniaturas = imagenes
@@ -15,7 +15,7 @@ function buildGaleriaHTML(imagenes, nombre) {
     )
     .join('');
 
-  return `<div class="detalle-galeria">${principal}<div class="detalle-miniaturas">${miniaturas}</div></div>`;
+  return `<div class="detalle-galeria">${ultimaHTML}${principal}<div class="detalle-miniaturas">${miniaturas}</div></div>`;
 }
 
 function activarGaleria() {
@@ -33,7 +33,7 @@ function buildFichaDetalleHTML(producto) {
   const numero = producto.id || '';
 
   return `
-    ${buildGaleriaHTML(imagenesDeProducto(producto), nombre)}
+    ${buildGaleriaHTML(imagenesDeProducto(producto), nombre, buildUltimaHTML(producto))}
     <div class="detalle-info">
       <p class="ficha-numero">pieza n.º ${numero}</p>
       <h1 class="detalle-nombre">${nombre}</h1>
@@ -41,10 +41,26 @@ function buildFichaDetalleHTML(producto) {
       ${buildTagsHTML(producto)}
       ${buildPrecioHTML(producto)}
       ${buildMedidasHTML(producto)}
+      <a href="medidas.html" class="medidas-link">¿cómo tomarme las medidas?</a>
       <div class="ficha-acciones ficha-acciones-detalle">
         ${buildBotonCarritoHTML(producto)}
       </div>
     </div>`;
+}
+
+function renderRelacionadas(productos, actual) {
+  const seccion = document.getElementById('relacionadas-seccion');
+  const lista = document.getElementById('relacionadas-lista');
+  if (!actual.categoria) return;
+
+  const relacionadas = productos
+    .filter((p) => p.id !== actual.id && (p.categoria || '').toLowerCase() === actual.categoria.toLowerCase())
+    .slice(0, 3);
+
+  if (!relacionadas.length) return;
+
+  lista.innerHTML = relacionadas.map((producto, indice) => buildFichaHTML(producto, indice)).join('');
+  seccion.hidden = false;
 }
 
 async function cargarDetalle() {
@@ -70,6 +86,7 @@ async function cargarDetalle() {
     contenedor.innerHTML = buildFichaDetalleHTML(producto);
     activarGaleria();
     document.title = `${producto.nombre || 'pieza'} — orihime`;
+    renderRelacionadas(productos, producto);
   } catch (error) {
     estado.textContent = 'no se pudo conectar con el catálogo. revisá la conexión con la hoja.';
   }
