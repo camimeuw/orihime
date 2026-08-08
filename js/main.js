@@ -1,7 +1,6 @@
 const CONFIG = {
   WHATSAPP_NUMBER: '5490000000000',
-  SHEET_ID: 'PEGA_ACA_EL_ID_DE_TU_GOOGLE_SHEET',
-  SHEET_GID: '0',
+  SHEET_CSV_URL: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTTXR5HDNFBf4DG_4FANIXUfHsLzDUspupM68yHky2UEW7lRPRwmrVDrCoTM7lz6PegvQggL-6UDNj6/pub?output=csv',
 };
 
 document.querySelectorAll('.nav-archivo a[href^="#"]').forEach((link) => {
@@ -161,10 +160,9 @@ function filtrarPorCategoria(productos, categoria) {
 
 async function cargarCatalogo() {
   const estado = document.getElementById('catalogo-estado');
-  const url = `https://docs.google.com/spreadsheets/d/${CONFIG.SHEET_ID}/gviz/tq?tqx=out:csv&gid=${CONFIG.SHEET_GID}`;
 
   try {
-    const respuesta = await fetch(url);
+    const respuesta = await fetch(CONFIG.SHEET_CSV_URL);
     if (!respuesta.ok) throw new Error('no se pudo leer la hoja');
     const texto = await respuesta.text();
     const filas = parseCSV(texto);
