@@ -288,7 +288,7 @@ body {
 .ascii-hero {
   display: inline-block;
   margin: 0 auto 1rem;
-  font-family: 'Courier', monospace;
+  font-family: 'CourierNew', monospace;
   font-size: clamp(0.42rem, 1.8vw, 0.62rem);
   line-height: 1;
   color: var(--tinta);
