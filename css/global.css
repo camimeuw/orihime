@@ -90,6 +90,26 @@ body {
 .hero-stamp {
   padding: 1rem 1.5rem 1.5rem;
   border-bottom: 1px dashed var(--tostado);
+  text-align: center;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.ascii-hero {
+  display: inline-block;
+  margin: 0 auto 1rem;
+  font-family: 'Courier', monospace;
+  font-size: clamp(0.42rem, 1.8vw, 0.62rem);
+  line-height: 1;
+  color: var(--tinta);
+  white-space: pre;
 }
 
 .stamp-sub {
