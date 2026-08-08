@@ -1,4 +1,20 @@
-function buildFichaHTML(producto) {
+function animarAsciiHero() {
+  const el = document.querySelector('.ascii-hero');
+  if (!el) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const lineas = el.textContent.split('\n');
+  el.textContent = '';
+  lineas.forEach((linea, i) => {
+    setTimeout(() => {
+      el.textContent += (i === 0 ? '' : '\n') + linea;
+    }, i * 20);
+  });
+}
+
+animarAsciiHero();
+
+function buildFichaHTML(producto, indice) {
   const nombre = producto.nombre || 'pieza';
   const numero = producto.id || '';
   const imagenes = imagenesDeProducto(producto);
@@ -7,7 +23,7 @@ function buildFichaHTML(producto) {
     : `<div class="ficha-placeholder">sin foto</div>`;
 
   return `
-    <div class="ficha-producto" data-categoria="${(producto.categoria || '').toLowerCase()}">
+    <div class="ficha-producto" data-categoria="${(producto.categoria || '').toLowerCase()}" style="--i:${indice}">
       <a href="pieza.html?id=${encodeURIComponent(numero)}" class="ficha-link">
         ${imagenHTML}
         <p class="ficha-nombre">${nombre}</p>
@@ -46,7 +62,7 @@ function renderCategorias(productos, onSelect) {
 
 function renderProductos(productos) {
   const grid = document.getElementById('productos-lista');
-  grid.innerHTML = productos.map(buildFichaHTML).join('');
+  grid.innerHTML = productos.map((producto, indice) => buildFichaHTML(producto, indice)).join('');
 }
 
 function filtrarPorCategoria(productos, categoria) {

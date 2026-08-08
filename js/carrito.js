@@ -41,6 +41,9 @@ function actualizarContadorCarrito() {
   const cantidad = leerCarrito().length;
   contador.textContent = cantidad;
   contador.hidden = cantidad === 0;
+  contador.classList.remove('animar');
+  void contador.offsetWidth;
+  contador.classList.add('animar');
 }
 
 function textoBotonCarrito(id) {
@@ -50,7 +53,8 @@ function textoBotonCarrito(id) {
 function buildBotonCarritoHTML(producto) {
   const id = producto.id || '';
   const nombre = producto.nombre || 'pieza';
-  return `<button class="btn-carrito" data-id="${id}" data-nombre="${nombre}" data-precio="${producto.precio || ''}" data-descuento="${producto.descuento || ''}">${textoBotonCarrito(id)}</button>`;
+  const activo = estaEnCarrito(id) ? ' en-carrito' : '';
+  return `<button class="btn-carrito${activo}" data-id="${id}" data-nombre="${nombre}" data-precio="${producto.precio || ''}" data-descuento="${producto.descuento || ''}">${textoBotonCarrito(id)}</button>`;
 }
 
 function renderCarritoPanel() {
@@ -91,24 +95,35 @@ function renderCarritoPanel() {
 
   contenedor.querySelectorAll('.carrito-quitar').forEach((boton) => {
     boton.addEventListener('click', () => {
-      quitarDelCarrito(boton.dataset.id);
-      renderCarritoPanel();
-      document.querySelectorAll(`.btn-carrito[data-id="${boton.dataset.id}"]`).forEach((btn) => {
-        btn.textContent = textoBotonCarrito(boton.dataset.id);
-      });
+      const id = boton.dataset.id;
+      const itemEl = boton.closest('.carrito-item');
+
+      itemEl.classList.add('saliendo');
+      setTimeout(() => {
+        quitarDelCarrito(id);
+        renderCarritoPanel();
+        document.querySelectorAll(`.btn-carrito[data-id="${id}"]`).forEach((btn) => {
+          btn.textContent = textoBotonCarrito(id);
+          btn.classList.remove('en-carrito');
+        });
+      }, 300);
     });
   });
 }
 
 function abrirCarrito() {
   renderCarritoPanel();
-  document.getElementById('carrito-panel').hidden = false;
+  const panel = document.getElementById('carrito-panel');
+  panel.hidden = false;
   document.getElementById('carrito-overlay').hidden = false;
+  requestAnimationFrame(() => panel.classList.add('abierto'));
 }
 
 function cerrarCarrito() {
-  document.getElementById('carrito-panel').hidden = true;
+  const panel = document.getElementById('carrito-panel');
+  panel.classList.remove('abierto');
   document.getElementById('carrito-overlay').hidden = true;
+  setTimeout(() => { panel.hidden = true; }, 280);
 }
 
 document.getElementById('carrito-boton')?.addEventListener('click', abrirCarrito);
@@ -133,6 +148,7 @@ document.addEventListener('click', (event) => {
     agregarAlCarrito(producto);
   }
   boton.textContent = textoBotonCarrito(producto.id);
+  boton.classList.toggle('en-carrito', estaEnCarrito(producto.id));
 });
 
 actualizarContadorCarrito();
