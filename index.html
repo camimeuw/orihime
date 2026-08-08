@@ -8,6 +8,20 @@
 </head>
 <body>
 
+  <button id="carrito-boton" class="carrito-boton" aria-label="ver carrito">
+    carrito <span id="carrito-contador" class="carrito-contador" hidden>0</span>
+  </button>
+  <div id="carrito-overlay" class="carrito-overlay" hidden></div>
+  <aside id="carrito-panel" class="carrito-panel" hidden>
+    <div class="carrito-panel-header">
+      <p class="carrito-panel-titulo">tu carrito</p>
+      <button id="carrito-cerrar" class="carrito-cerrar" aria-label="cerrar carrito">cerrar ×</button>
+    </div>
+    <div id="carrito-items" class="carrito-items"></div>
+    <p id="carrito-total" class="carrito-total"></p>
+    <a id="carrito-whatsapp" class="btn-whatsapp" target="_blank" rel="noopener" hidden>finalizar por whatsapp</a>
+  </aside>
+
   <header class="topbar">
     <p class="mark">°</p>
     <div class="brand-row">
@@ -70,6 +84,7 @@
   </footer>
 
   <script src="js/catalogo.js"></script>
+  <script src="js/carrito.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

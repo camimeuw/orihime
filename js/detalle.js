@@ -42,7 +42,10 @@ function buildFichaDetalleHTML(producto) {
       ${buildTagsHTML(producto)}
       ${buildPrecioHTML(producto)}
       ${buildMedidasHTML(producto)}
-      <a href="https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=${mensaje}" class="btn-comprar btn-comprar-grande" target="_blank" rel="noopener">comprar por whatsapp</a>
+      <div class="ficha-acciones ficha-acciones-detalle">
+        ${buildBotonCarritoHTML(producto)}
+        <a href="https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=${mensaje}" class="btn-comprar btn-comprar-grande" target="_blank" rel="noopener">comprar por whatsapp</a>
+      </div>
     </div>`;
 }
 
