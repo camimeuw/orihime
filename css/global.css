@@ -302,10 +302,13 @@ body {
   display: inline-block;
   margin: 0 auto 1rem;
   font-family: 'CourierNew', monospace;
+  font-weight: 700;
   font-size: clamp(0.42rem, 1.8vw, 0.62rem);
   line-height: 1;
   color: var(--tinta);
   white-space: pre;
+  -webkit-text-stroke: 0.3px currentColor;
+  text-stroke: 0.3px currentColor;
 }
 
 .ascii-hero-panoramico {
