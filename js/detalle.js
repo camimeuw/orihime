@@ -3,7 +3,7 @@ function buildGaleriaHTML(imagenes, nombre, ultimaHTML) {
     return `<div class="detalle-galeria">${ultimaHTML}<div class="detalle-placeholder">sin foto</div></div>`;
   }
 
-  const principal = `<img src="${optimizarImagen(imagenes[0], 1200)}" alt="${nombre}" decoding="async" class="detalle-img-principal" id="detalle-img-principal">`;
+  const principal = `<img src="${imagenes[0]}" alt="${nombre}" decoding="async" class="detalle-img-principal" id="detalle-img-principal">`;
   if (imagenes.length === 1) {
     return `<div class="detalle-galeria">${ultimaHTML}${principal}</div>`;
   }
@@ -11,7 +11,7 @@ function buildGaleriaHTML(imagenes, nombre, ultimaHTML) {
   const miniaturas = imagenes
     .map(
       (src, i) =>
-        `<img src="${optimizarImagen(src, 200)}" alt="${nombre} foto ${i + 1}" loading="lazy" decoding="async" class="detalle-miniatura${i === 0 ? ' miniatura-activa' : ''}" data-src="${optimizarImagen(src, 1200)}">`
+        `<img src="${src}" alt="${nombre} foto ${i + 1}" loading="lazy" decoding="async" class="detalle-miniatura${i === 0 ? ' miniatura-activa' : ''}" data-src="${src}">`
     )
     .join('');
 
