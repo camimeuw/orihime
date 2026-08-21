@@ -311,10 +311,6 @@ body {
   text-stroke: 0.3px currentColor;
 }
 
-.ascii-hero-panoramico {
-  font-size: clamp(0.2rem, 0.9vw, 0.34rem);
-}
-
 .stamp-sub {
   font-family: 'CourierNew', monospace;
   font-size: 0.65rem;
