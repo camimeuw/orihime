@@ -73,6 +73,12 @@ function imagenesDeProducto(producto) {
   return [producto.imagen, producto.imagen2, producto.imagen3].filter(Boolean);
 }
 
+function optimizarImagen(url, ancho) {
+  if (!url) return url;
+  const sinProtocolo = url.replace(/^https?:\/\//, '');
+  return `https://images.weserv.nl/?url=${encodeURIComponent(sinProtocolo)}&w=${ancho}&q=75&output=webp`;
+}
+
 function formatPrecio(valor) {
   const numero = parseFloat(String(valor).replace(',', '.'));
   if (isNaN(numero)) return null;
@@ -120,7 +126,7 @@ function buildFichaHTML(producto, indice) {
   const numero = producto.id || '';
   const imagenes = imagenesDeProducto(producto);
   const imagenHTML = imagenes.length
-    ? `<img src="${imagenes[0]}" alt="${nombre}" loading="lazy" class="ficha-img">`
+    ? `<img src="${optimizarImagen(imagenes[0], 640)}" alt="${nombre}" loading="lazy" decoding="async" class="ficha-img">`
     : `<div class="ficha-placeholder">sin foto</div>`;
 
   return `
