@@ -140,10 +140,15 @@ function buildFichaHTML(producto, indice) {
     </div>`;
 }
 
+function estaDisponible(producto) {
+  const valor = (producto.disponible || 'si').trim().toLowerCase();
+  return !valor.startsWith('no');
+}
+
 async function fetchProductos() {
   const respuesta = await fetch(CONFIG.SHEET_CSV_URL);
   if (!respuesta.ok) throw new Error('no se pudo leer la hoja');
   const texto = await respuesta.text();
   const filas = parseCSV(texto);
-  return rowsToProducts(filas).filter((p) => (p.disponible || 'si').toLowerCase() !== 'no');
+  return rowsToProducts(filas).filter(estaDisponible);
 }
