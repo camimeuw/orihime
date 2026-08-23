@@ -59,7 +59,7 @@ function parseCSV(text) {
 }
 
 function rowsToProducts(rows) {
-  const headers = rows[0].map((h) => h.trim().toLowerCase());
+  const headers = rows[0].map((h) => h.trim().toLowerCase().replace(/[\s_-]+/g, ''));
   return rows.slice(1).map((cells) => {
     const item = {};
     headers.forEach((key, i) => {
@@ -70,7 +70,12 @@ function rowsToProducts(rows) {
 }
 
 function imagenesDeProducto(producto) {
-  return [producto.imagen, producto.imagen2, producto.imagen3].filter(Boolean);
+  const columnas = [producto.imagen, producto.imagen2, producto.imagen3].filter(Boolean);
+  const urls = columnas
+    .flatMap((valor) => valor.split(','))
+    .map((url) => url.trim())
+    .filter(Boolean);
+  return [...new Set(urls)];
 }
 
 function formatPrecio(valor) {
