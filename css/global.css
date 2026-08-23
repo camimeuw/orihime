@@ -604,6 +604,11 @@ body {
   margin-bottom: 1rem;
 }
 
+.politicas-lista + .politicas-titulo,
+.medidas-intro + .politicas-titulo {
+  margin-top: 2rem;
+}
+
 .politicas-lista {
   max-width: 40ch;
   margin: 0 auto;
